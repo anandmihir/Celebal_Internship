@@ -102,16 +102,6 @@ The project demonstrates that:
 
 ---
 
-## Repository Contents
-
-```
-Week4/
-│── CIFAR10_ANN_CNN_Learning_Project.ipynb
-│── README.md
-```
-
----
-
 ## Learning Outcomes
 
 Through this assignment, I gained practical experience in:
