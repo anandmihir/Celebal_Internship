@@ -99,9 +99,7 @@ The following images are randomly selected handwritten digits from the MNIST dat
 
 Artificial Gaussian noise is added to the original images to create the noisy inputs that will be used to train the denoising autoencoder.
 
-<p align="center">
-    <img src="images/original_noisy.png" width="850">
-</p>
+<img width="1415" height="632" alt="image" src="https://github.com/user-attachments/assets/3c0360bc-18d7-42b2-a855-6a0e726af6e8" />
 
 ---
 
@@ -109,9 +107,8 @@ Artificial Gaussian noise is added to the original images to create the noisy in
 
 After training, the denoising autoencoder reconstructs clean images from the noisy inputs. The comparison below demonstrates the effectiveness of the model in removing noise while preserving the digit structure.
 
-<p align="center">
-    <img src="images/denoised.png" width="900">
-</p>
+<img width="1381" height="755" alt="image" src="https://github.com/user-attachments/assets/617eb45e-e7ee-4a4b-8666-e849ce88c1e5" />
+
 
 ---
 
@@ -119,9 +116,7 @@ After training, the denoising autoencoder reconstructs clean images from the noi
 
 The graph below shows the decrease in training and validation loss during model training.
 
-<p align="center">
-    <img src="images/loss.png" width="700">
-</p>
+<img width="752" height="447" alt="image" src="https://github.com/user-attachments/assets/aa83881c-e2bd-4a87-8141-e67cb1dbc04d" />
 
 ---
 
