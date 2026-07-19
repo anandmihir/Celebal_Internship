@@ -1,26 +1,39 @@
 # 🖼️ Denoising Autoencoder using MNIST
 
-## 📌 Project Overview
-
-This project implements a **Convolutional Denoising Autoencoder** using the **MNIST handwritten digit dataset**. The objective is to train a neural network that can reconstruct clean handwritten digit images from artificially corrupted (noisy) images.
-
-Gaussian noise is added to the original images, and the autoencoder learns to remove the noise while preserving the important features of the digits.
+A **Denoising Autoencoder** is a type of neural network that learns to reconstruct clean images from noisy inputs. In this project, a Convolutional Denoising Autoencoder is trained on the MNIST handwritten digit dataset to remove artificially added Gaussian noise while preserving the original digit structure.
 
 ---
 
-## 🎯 Objectives
+# 📌 Project Overview
+
+The objective of this project is to implement a **Convolutional Denoising Autoencoder** using TensorFlow/Keras.
+
+The workflow includes:
+
+- Loading and preprocessing the MNIST dataset
+- Adding Gaussian noise to clean images
+- Building an Encoder-Decoder architecture
+- Training the model using noisy images as inputs and clean images as targets
+- Reconstructing clean images from noisy test images
+- Comparing Original, Noisy, and Denoised images
+- Visualizing training performance using loss curves
+
+---
+
+# 🎯 Objectives
 
 - Load and preprocess the MNIST dataset.
-- Add Gaussian noise to the images.
+- Normalize the images.
+- Add artificial Gaussian noise.
 - Build a Convolutional Denoising Autoencoder.
-- Train the model using noisy images as input and clean images as output.
-- Generate denoised images on the test dataset.
-- Compare Original, Noisy, and Reconstructed images.
-- Visualize training and validation loss.
+- Train the model using noisy images as inputs.
+- Generate denoised outputs.
+- Compare reconstruction results visually.
+- Analyze the model performance.
 
 ---
 
-## 🛠️ Technologies Used
+# 🛠 Technologies Used
 
 - Python
 - TensorFlow / Keras
@@ -30,9 +43,10 @@ Gaussian noise is added to the original images, and the autoencoder learns to re
 
 ---
 
-## 📂 Dataset
+# 📂 Dataset Information
 
-- Dataset: **MNIST Handwritten Digits**
+Dataset Used: **MNIST Handwritten Digits**
+
 - Training Images: **60,000**
 - Testing Images: **10,000**
 - Image Size: **28 × 28**
@@ -40,26 +54,26 @@ Gaussian noise is added to the original images, and the autoencoder learns to re
 
 ---
 
-## 🏗️ Model Architecture
+# 🏗 Model Architecture
 
-### Encoder
+## Encoder
 
-- Conv2D (32 Filters)
+- Conv2D (32 Filters, ReLU)
 - MaxPooling2D
-- Conv2D (64 Filters)
+- Conv2D (64 Filters, ReLU)
 - MaxPooling2D
 
-### Decoder
+## Decoder
 
-- Conv2D (64 Filters)
+- Conv2D (64 Filters, ReLU)
 - UpSampling2D
-- Conv2D (32 Filters)
+- Conv2D (32 Filters, ReLU)
 - UpSampling2D
-- Conv2D (1 Filter, Sigmoid Activation)
+- Conv2D (1 Filter, Sigmoid)
 
 ---
 
-## ⚙️ Training Configuration
+# ⚙ Training Configuration
 
 | Parameter | Value |
 |-----------|-------|
@@ -72,71 +86,124 @@ Gaussian noise is added to the original images, and the autoencoder learns to re
 
 ---
 
-# 📸 Results
+# 📷 Original MNIST Images
 
-## Original Images
+The following images are randomly selected handwritten digits from the MNIST dataset before any preprocessing or noise is added.
 
-![Original Images](images/original.png)
-
----
-
-## Noisy Images
-
-![Noisy Images](images/noisy.png)
+<p align="center">
+    <img src="images/original.png" width="750">
+</p>
 
 ---
 
-## Denoised Images
+# 📷 Original vs Noisy Images
 
-![Denoised Images](images/denoised.png)
+Artificial Gaussian noise is added to the original images to create the noisy inputs that will be used to train the denoising autoencoder.
 
----
-
-## Training Loss
-
-![Training Loss](images/loss.png)
+<p align="center">
+    <img src="images/original_noisy.png" width="850">
+</p>
 
 ---
 
-# 📈 Observations
+# 📷 Original vs Noisy vs Denoised Images
 
-- The autoencoder successfully removed most of the Gaussian noise from the input images.
-- The reconstructed images preserved the overall digit structure while reducing noise.
-- Training and validation loss decreased consistently during training, indicating effective learning.
-- Simpler digits such as **0** and **1** were reconstructed more accurately than more complex digits.
-- A higher noise factor would require a deeper model or additional training epochs for better reconstruction.
+After training, the denoising autoencoder reconstructs clean images from the noisy inputs. The comparison below demonstrates the effectiveness of the model in removing noise while preserving the digit structure.
+
+<p align="center">
+    <img src="images/denoised.png" width="900">
+</p>
 
 ---
 
-# ⚠️ Challenges
+# 📉 Training and Validation Loss
 
-- Selecting an appropriate noise factor without making reconstruction too difficult.
+The graph below shows the decrease in training and validation loss during model training.
+
+<p align="center">
+    <img src="images/loss.png" width="700">
+</p>
+
+---
+
+# 📊 Observations
+
+- The autoencoder successfully learned to remove Gaussian noise from handwritten digit images.
+
+- The reconstructed images retained the important structural features of the digits while eliminating most of the added noise.
+
+- Training and validation loss decreased steadily, indicating that the model learned meaningful image representations.
+
+- Digits with simpler shapes were reconstructed more accurately than more complex digits.
+
+- Increasing the amount of noise would require a deeper architecture or additional training epochs for improved reconstruction.
+
+---
+
+# ⚠ Challenges
+
+- Choosing an appropriate noise factor without making reconstruction too difficult.
+
 - Preserving fine image details while removing noise.
-- Avoiding overfitting with limited training epochs.
-- Balancing model complexity and reconstruction quality.
+
+- Balancing reconstruction quality and model complexity.
+
+- Avoiding overfitting during training.
 
 ---
 
 # 🚀 Future Improvements
 
-- Train for more epochs.
-- Compare different noise levels.
-- Add Batch Normalization.
-- Experiment with deeper encoder-decoder architectures.
-- Evaluate performance using PSNR and SSIM metrics.
+- Train the model for more epochs.
 
+- Experiment with different noise levels.
 
+- Add Batch Normalization layers.
 
----
+- Use Skip Connections (U-Net style architecture).
 
-# 📌 Conclusion
+- Evaluate reconstruction quality using PSNR and SSIM metrics.
 
-This project demonstrates the effectiveness of Convolutional Denoising Autoencoders in image restoration tasks. The model successfully reconstructs clean handwritten digits from noisy inputs while preserving their essential features. The results highlight the capability of deep learning techniques for image denoising and provide a foundation for more advanced applications in computer vision and image enhancement.
+- Experiment with Variational Autoencoders (VAE).
 
 ---
 
-## 👨‍💻 Author
+# ▶️ How to Run the Project
+
+### Install Dependencies
+
+```bash
+pip install tensorflow numpy matplotlib pillow
+```
+
+### Run the Notebook
+
+Open
+
+```
+Week6_Mihir_Anand_DPGU.ipynb
+```
+
+using
+
+- Jupyter Notebook
+- Google Colab
+- VS Code
+
+Run all cells sequentially.
+
+---
+
+# 📌 Results
+
+The trained Convolutional Denoising Autoencoder successfully reconstructs clean handwritten digit images from noisy inputs. Visual comparisons between the original, noisy, and reconstructed images demonstrate that the model effectively removes Gaussian noise while preserving the essential digit structures. The decreasing training and validation loss further confirms successful learning.
+
+---
+
+# 👨‍💻 Author
 
 **Mihir Anand**
 
-Celebal Technologies – Data Science Internship
+**Celebal Technologies – Data Science Internship**
+
+**Week 6 Assignment**
