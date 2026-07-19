@@ -90,9 +90,8 @@ Dataset Used: **MNIST Handwritten Digits**
 
 The following images are randomly selected handwritten digits from the MNIST dataset before any preprocessing or noise is added.
 
-<p align="center">
-    <img src="images/original.png" width="750">
-</p>
+<img width="1252" height="262" alt="image" src="https://github.com/user-attachments/assets/f096026c-88d8-42fe-9eaf-8ab550280699" />
+
 
 ---
 
