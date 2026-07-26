@@ -1,0 +1,171 @@
+# Week 7 Assignment – Retrieval-Augmented Generation (RAG) System
+
+## Overview
+
+This assignment demonstrates the implementation of a **Retrieval-Augmented Generation (RAG)** pipeline using **LangChain**, **FAISS**, **Hugging Face Embeddings**, and **TinyLlama**.
+
+The system allows users to upload a document (PDF or TXT), processes it into searchable chunks, stores the embeddings in a vector database, retrieves the most relevant information for a user's query, and generates answers using a Large Language Model (LLM).
+
+---
+
+## Objectives
+
+- Load and process custom documents.
+- Split documents into smaller text chunks.
+- Generate semantic embeddings.
+- Store embeddings in a FAISS vector database.
+- Retrieve relevant information using similarity search.
+- Generate context-aware responses using TinyLlama.
+- Reduce hallucinations by answering only from the retrieved context.
+
+---
+
+## Technologies Used
+
+- Python
+- LangChain
+- Hugging Face Transformers
+- Sentence Transformers
+- FAISS
+- TinyLlama-1.1B-Chat
+- PyPDF
+- Google Colab
+
+---
+
+## Project Workflow
+
+### Step 1: Import Libraries
+Install and import all required libraries for document processing, embeddings, vector storage, and language model inference.
+
+### Step 2: Document Ingestion
+- Upload a PDF or TXT document.
+- Load the document using the appropriate document loader.
+
+### Step 3: Text Chunking
+- Split the document into smaller chunks using `RecursiveCharacterTextSplitter`.
+- Chunk Size: **400**
+- Chunk Overlap: **50**
+
+### Step 4: Generate Embeddings
+Convert each text chunk into dense vector embeddings using:
+
+```
+sentence-transformers/all-MiniLM-L6-v2
+```
+
+### Step 5: Create Vector Database
+Store all embeddings inside a **FAISS** vector database to enable efficient similarity search.
+
+### Step 6: Load the Language Model
+Load the **TinyLlama-1.1B-Chat-v1.0** model using the Hugging Face pipeline for text generation.
+
+### Step 7: User Query
+Accept a natural language question from the user.
+
+### Step 8: Retrieve Relevant Context
+Perform similarity search on the FAISS vector database to retrieve the top matching document chunks.
+
+### Step 9: Create Context
+Merge the retrieved chunks into a single context for the language model.
+
+### Step 10: Prompt Construction
+Create a prompt that instructs the model to answer **only using the retrieved context**.
+
+### Step 11: Answer Generation
+Generate the final response using TinyLlama.
+
+---
+
+## RAG Pipeline
+
+```
+User Document
+      │
+      ▼
+Document Loader
+      │
+      ▼
+Text Chunking
+      │
+      ▼
+Embedding Model
+      │
+      ▼
+FAISS Vector Database
+      │
+      ▼
+User Question
+      │
+      ▼
+Similarity Search
+      │
+      ▼
+Retrieved Context
+      │
+      ▼
+TinyLlama LLM
+      │
+      ▼
+Generated Answer
+```
+
+---
+
+## Models Used
+
+### Embedding Model
+
+- sentence-transformers/all-MiniLM-L6-v2
+
+### Language Model
+
+- TinyLlama/TinyLlama-1.1B-Chat-v1.0
+
+---
+
+## Features
+
+- Supports PDF and TXT documents.
+- Semantic search using vector embeddings.
+- Fast retrieval with FAISS.
+- Context-aware answer generation.
+- Reduces hallucinations by restricting responses to retrieved information.
+- Easy to extend with other embedding models or LLMs.
+
+---
+
+## Output
+
+The notebook performs the following operations:
+
+- Uploads a document.
+- Extracts text.
+- Splits text into chunks.
+- Generates embeddings.
+- Builds a FAISS vector database.
+- Accepts user queries.
+- Retrieves relevant document chunks.
+- Generates an answer using TinyLlama.
+
+---
+
+## Learning Outcomes
+
+After completing this assignment, you will understand:
+
+- Retrieval-Augmented Generation (RAG)
+- Document ingestion
+- Text chunking strategies
+- Semantic embeddings
+- Vector databases (FAISS)
+- Similarity search
+- Prompt engineering
+- Context-aware LLM inference
+- Reducing hallucinations using retrieval
+
+---
+
+## Conclusion
+
+This project demonstrates a complete Retrieval-Augmented Generation (RAG) workflow. By combining semantic retrieval with a language model, the system generates accurate, context-based answers from custom documents while minimizing hallucinations. The implementation serves as a strong foundation for building document-based chatbots, question-answering systems, and knowledge assistants.
